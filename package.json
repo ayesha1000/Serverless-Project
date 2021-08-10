@@ -1,0 +1,36 @@
+{
+  "name": "serverless-project",
+  "version": "1.0.0",
+  "description": "Serverless webpack example using ecma script",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "serverless": "^2.53.1",
+    "serverless-offline": "^8.0.0",
+    "serverless-webpack": "^5.3.1",
+    "webpack": "^4.35.2"
+  },
+  "author": "The serverless webpack authors (https://github.com/elastic-coders/serverless-webpack)",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "camelcase": "^6.2.0",
+    "camelcase-keys": "^7.0.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.0",
+    "pg": "^8.7.1",
+    "sequelize": "^6.6.5",
+    "serverless-http": "^2.7.0",
+    "snake-case": "^3.0.4",
+    "snakecase-keys": "^4.0.2"
+  }
+}
