@@ -1,35 +1,32 @@
 const {Sequelize, DataTypes} = require('sequelize');
-require("dotenv").config();
 const CustomerModel = require('./../models/Customer');
+require("dotenv").config();
 
-const sequelize = new Sequelize(
+const sequelize = new Sequelize (
     process.env.DB_NAME,
     process.env.DB_USER,
     process.env.DB_PASS,
     {
-        dialect :'mysql',
+        dialect : 'mysql',
         dialectModule: require('mysql2'),
-        host: process.env.DB_HOST,
-        port: process.env.DB_PORT
-
+        host : process.env.DB_HOST,
+        port : process.env.PORT
     }
-
 )
-
-const Customer = CustomerModel(sequelize, DataTypes)
-
+const Customer = CustomerModel(sequelize, DataTypes);
 const Models = {Customer}
+
 const connection = {}
 
-module.exports = async() =>{
+module.exports = async() => {
     if(connection.isConnected) {
-        console.log('Using existing connection');
+        console.log('Using existing connection')
         return Models
     }
-    await sequelize.sync()
-    await sequelize.authenticate()
-    connection.isConnected= true
-    console.log('Created connection')
+    await sequelize.sync() // creates the table if it doesnot exists
+    connection.isConnected = true
+    console.log('Connection created')
     return Models
 
 }
+

@@ -6,15 +6,12 @@ function HTTPError (statusCode, message) {
     return error
   }
 
-module.exports.handler = async(event) => {
+module.exports.getOne = async(event) => {
   try{
-
     const {Customer} = await connectToDatabase();
     const customer = await Customer.findAll({ attributes: ['customer_id', 'customer_name','customer_phoneno','customer_address'], 
     where: {
-        deletflag: 0,
-    customer_id : event.pathParameters.id},
-    })
+        deletflag: 0, customer_id: event.pathParameters.id}})
     if(!customer) {
       throw new HTTPError(404,'Could not get Customers')
     }
