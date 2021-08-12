@@ -3,7 +3,6 @@ const con = require ('./../configs/dbConfig');
 exports.handler = async(event) => {
     try{
         const {customer_id,customer_name,customer_phoneno, customer_address} = JSON.parse(event.body)
-        console.log(event)
         
         const data = await new Promise((resolve,reject)=>{
             const query = "INSERT INTO customer (customer_id, customer_name, customer_phoneno, customer_address, deletflag) VALUES ('" + customer_id+ "' , '" + customer_name + "' , '" + customer_phoneno + "' , '" + customer_address + "' , '" + 0 + "' );"

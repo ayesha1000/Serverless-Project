@@ -1,8 +1,7 @@
 const con = require ('./../configs/dbConfig');
 
 exports.handler = async(event) => {
-    try{
-       
+    try{       
         const data = await new Promise((resolve,reject)=>{
             let id = event.pathParameters.id;
             let query = `UPDATE customer SET deletflag= 1 WHERE customer_id='${id}'`;

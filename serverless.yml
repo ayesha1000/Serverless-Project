@@ -1,4 +1,17 @@
 service: serverless-project
+custom:
+  secrets: ${file(secrets.json)}
+
+stage: ${self:custom.secrets.NODE_ENV}
+
+environment: 
+    DB_NAME: ${self:custom.secrets.DB_NAME}
+    DB_USER: ${self:custom.secrets.DB_USER}
+    DB_PASS: ${self:custom.secrets.DB_PASS}
+    DB_HOST: ${self:custom.secrets.DB_HOST}
+    DB_PORT: ${self:custom.secrets.DB_PORT}
+    NODE_ENV: ${self:custom.secrets.NODE_ENV}
+
 useDotenv: true
 # app and org for use with dashboard.serverless.com
 #app: your-app-name
@@ -45,5 +58,45 @@ functions:
       - http:
           method: delete
           path: customer/{id}
+  checkconnectionseq:
+    handler : handlers/checkconnection.checkconnection
+    events:
+      - http:
+          method: get
+          path: /
+  getcustomersseq:
+    handler : handlers/getcustomerseq.handler
+    events:
+      - http:
+          method: get
+          path: customerseq
+  getcustomerIdseq:
+    handler : handlers/getcustomeridseq.getOne
+    events:
+      - http:
+          method: get
+          path: customerseq/{id}
+  createcustomerseq:
+    handler : handlers/createcustomerseq.handler
+    events:
+      - http:
+          method: post
+          path: customerseq
+  updatecustomerseq:
+    handler : handlers/updatecustomerseq.handler
+    events:
+      - http:
+          method: put
+          path: customerseq/{id}
+  deletecustomerseq:
+    handler : handlers/deletecustomerseq.handler
+    events:
+      - http:
+          method: delete
+          path: customerseq/{id}
+ 
+
+  
+
 
 
