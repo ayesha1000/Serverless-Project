@@ -6,7 +6,7 @@ function HTTPError (statusCode, message) {
     return error
   }
 
-module.exports.getOne = async(event) => {
+module.exports.handler = async(event) => {
   try{
     const {Customer} = await connectToDatabase();
     const customer = await Customer.findAll({ attributes: ['customer_id', 'customer_name','customer_phoneno','customer_address'], 
