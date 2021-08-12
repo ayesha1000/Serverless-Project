@@ -2,16 +2,6 @@ service: serverless-project
 custom:
   secrets: ${file(secrets.json)}
 
-stage: ${self:custom.secrets.NODE_ENV}
-
-environment: 
-    DB_NAME: ${self:custom.secrets.DB_NAME}
-    DB_USER: ${self:custom.secrets.DB_USER}
-    DB_PASS: ${self:custom.secrets.DB_PASS}
-    DB_HOST: ${self:custom.secrets.DB_HOST}
-    DB_PORT: ${self:custom.secrets.DB_PORT}
-    NODE_ENV: ${self:custom.secrets.NODE_ENV}
-
 useDotenv: true
 # app and org for use with dashboard.serverless.com
 #app: your-app-name
@@ -25,6 +15,15 @@ plugins:
 provider:
   name: aws
   runtime: nodejs12.x
+  stage: ${self:custom.secrets.NODE_ENV}
+
+  environment: 
+    DB_NAME: ${self:custom.secrets.DB_NAME}
+    DB_USER: ${self:custom.secrets.DB_USER}
+    DB_PASS: ${self:custom.secrets.DB_PASS}
+    DB_HOST: ${self:custom.secrets.DB_HOST}
+    DB_PORT: ${self:custom.secrets.DB_PORT}
+    NODE_ENV: ${self:custom.secrets.NODE_ENV}
   lambdaHashingVersion: 20201221
 
 functions:

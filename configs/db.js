@@ -1,6 +1,6 @@
 const {Sequelize, DataTypes} = require('sequelize');
 const CustomerModel = require('./../models/Customer');
-require("dotenv").config();
+//require("dotenv").config();
 
 const sequelize = new Sequelize (
     process.env.DB_NAME,
