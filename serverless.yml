@@ -111,6 +111,19 @@ functions:
       - http:
           method: post
           path: customervand
+  updatecustomervand:
+    handler : handlers/updatecustomervand.handler
+    events:
+      - http:
+          method: put
+          path: customervand/{id}
+  deletecustomervand:
+    handler : handlers/deletecustomervand.handler
+    events:
+      - http:
+          method: delete
+          path: customervand/{id}
+
  
 
   

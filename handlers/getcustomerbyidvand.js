@@ -2,8 +2,13 @@ const vandium = require("vandium");
 const con = require ('./../configs/dbConfig');
 
 exports.handler = vandium.api()
-.GET(
-    (event)=>{
+.GET()
+.validation({
+    pathParameters: {
+        id: 'number:min=1,max=20,required'
+    }
+})
+.handler(async(event)=>{
     return new Promise((resolve,reject)=>{
         
         con.query(`SELECT customer_id AS customerID, customer_name AS customerName, 
