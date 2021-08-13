@@ -93,6 +93,24 @@ functions:
       - http:
           method: delete
           path: customerseq/{id}
+  getcustomervand:
+    handler : handlers/getcustomervand.handler
+    events:
+      - http:
+          method: get
+          path: customervand
+  getcustomeridvand:
+    handler : handlers/getcustomerbyidvand.handler
+    events:
+      - http:
+          method: get
+          path: customervand/{id}
+  createcustomervand:
+    handler : handlers/createcustomervand.handler
+    events:
+      - http:
+          method: post
+          path: customervand
  
 
   
