@@ -27,36 +27,43 @@ provider:
   lambdaHashingVersion: 20201221
 
 functions:
+  verify-token:
+    handler: authorizer/verifytoken.authorizer
   customers:
     handler : handlers/getcustomer.handler
     events:
       - http:
           method: get
           path: customer
+          authorizer: verify-token
   customersid:
     handler : handlers/getcustomerbyid.handler
     events:
       - http:
           method: get
           path: customer/{id}
+          authorizer: verify-token
   insertcustomers:
     handler : handlers/createcustomer.handler
     events:
       - http:
           method: post
           path: customer
+          authorizer: verify-token
   updatecustomers:
     handler : handlers/updatecustomer.handler
     events:
       - http:
           method: put
           path: customer/{id}
+          authorizer: verify-token
   deletecustomers:
     handler : handlers/deletecustomer.handler
     events:
       - http:
           method: delete
           path: customer/{id}
+          authorizer: verify-token
   checkconnectionseq:
     handler : handlers/checkconnection.checkconnection
     events:
@@ -69,60 +76,70 @@ functions:
       - http:
           method: get
           path: customerseq
+          authorizer: verify-token
   getcustomerIdseq:
     handler : handlers/getcustomeridseq.handler
     events:
       - http:
           method: get
           path: customerseq/{id}
+          authorizer: verify-token
   createcustomerseq:
     handler : handlers/createcustomerseq.handler
     events:
       - http:
           method: post
           path: customerseq
+          authorizer: verify-token
   updatecustomerseq:
     handler : handlers/updatecustomerseq.handler
     events:
       - http:
           method: put
           path: customerseq/{id}
+          authorizer: verify-token
   deletecustomerseq:
     handler : handlers/deletecustomerseq.handler
     events:
       - http:
           method: delete
           path: customerseq/{id}
+          authorizer: verify-token
   getcustomervand:
     handler : handlers/getcustomervand.handler
     events:
       - http:
           method: get
           path: customervand
+          authorizer: verify-token
   getcustomeridvand:
     handler : handlers/getcustomerbyidvand.handler
     events:
       - http:
           method: get
           path: customervand/{id}
+          authorizer: verify-token
   createcustomervand:
     handler : handlers/createcustomervand.handler
     events:
       - http:
           method: post
           path: customervand
+          authorizer: verify-token
   updatecustomervand:
     handler : handlers/updatecustomervand.handler
     events:
       - http:
           method: put
           path: customervand/{id}
+          authorizer: verify-token
   deletecustomervand:
     handler : handlers/deletecustomervand.handler
     events:
       - http:
           method: delete
           path: customervand/{id}
+          authorizer: verify-token
 
  
 
