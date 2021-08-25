@@ -8,11 +8,14 @@ module.exports = {
     filename: '[name].js',
     path: path.join(__dirname, '.webpack'),
   },
+  resolve:{
+    extensions: [".webpack.js", ".web.js", ".mjs", ".js", ".json"],
+  },
   mode: 'development',
   target: 'node',
   module: {
     rules: [
-      {
+      {      
         test: /\.js$/, // include .js files
         enforce: 'pre', // preload the jshint loader
         exclude: /node_modules/, // exclude any and all files in the node_modules folder
@@ -35,6 +38,10 @@ module.exports = {
           },
         ],
       },
+      {test: /\.mjs$/,
+        include: /node_modules/,
+        type: "javascript/auto",
+      },
     ],
-  },
+  },  
 };

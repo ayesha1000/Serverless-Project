@@ -140,6 +140,19 @@ functions:
           method: delete
           path: customervand/{id}
           authorizer: verify-token
+  graphql:
+    handler : handlers/graphql.graphqlHandler
+    events:
+      - http:
+          method: post
+          path: graphql
+  graphqlget:
+    handler : handlers/graphql.graphqlHandler
+    events:
+      - http:
+          method: get
+          path: graphql
+
 
  
 

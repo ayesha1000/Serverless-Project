@@ -23,7 +23,7 @@ module.exports = async() => {
         console.log('Using existing connection')
         return Models
     }
-    await sequelize.sync() // creates the table if it doesnot exists
+    //await sequelize.sync() // creates the table if it doesnot exists
     connection.isConnected = true
     console.log('Connection created')
     return Models
